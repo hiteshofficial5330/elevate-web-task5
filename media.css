@@ -1,324 +1,160 @@
-/* --- 1. Variables & Reset --- */
-:root {
-    --primary: #6366f1; /* Indigo */
-    --primary-dark: #4f46e5;
-    --text-dark: #1e293b;
-    --text-light: #64748b;
-    --bg-light: #f8fafc;
-    --white: #ffffff;
-    --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* --- RESET & VARIABLES --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-dark);
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    background-color: #f8fafc;
+    color: #1e293b;
+    overflow-x: hidden;
 }
 
-/* --- 2. Sticky Glass Navbar --- */
+/* --- NAVBAR STYLING (Desktop Default) --- */
 .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px); /* Glass effect */
+    background: white;
+    min-height: 70px; /* Changed to min-height to grow if needed */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 5%;
-    box-shadow: 0 1px 15px rgba(0,0,0,0.05);
+    padding: 10px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    color: #6366f1;
+    white-space: nowrap; /* Keeps logo on one line */
 }
 
 .nav-links {
-    list-style: none;
     display: flex;
-    align-items: center;
+    list-style: none;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-dark);
+    color: #333;
     font-weight: 500;
-    transition: color 0.3s ease;
+    font-size: 1rem;
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: var(--primary);
+    color: #6366f1;
 }
 
 .nav-btn {
-    background: var(--gradient);
+    background: #6366f1;
     color: white !important;
-    padding: 0.6rem 1.5rem;
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-    transition: transform 0.3s ease !important;
+    padding: 8px 20px;
+    border-radius: 20px;
 }
 
-.nav-btn:hover {
-    transform: translateY(-2px);
-}
-
-/* Hide Mobile Menu Checkbox & Icon by default */
-#menu-toggle, .hamburger {
-    display: none;
-}
-
-/* --- 3. Hero Section --- */
+/* --- MAIN CONTENT STYLES --- */
 .hero {
     text-align: center;
-    padding: 5rem 1rem 8rem; /* Bottom padding creates space */
-    background: var(--white);
+    padding: 80px 20px 40px;
+    background: white;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Text gradient */
-}
-
-.hero p {
-    color: var(--text-light);
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-.save-badge {
-    background: #dcfce7;
-    color: #166534;
-    font-size: 0.8rem;
-    padding: 2px 8px;
-    border-radius: 12px;
-    margin-left: 5px;
-    font-weight: 600;
-}
-
-/* --- 4. Pricing Grid --- */
-.container {
-    max-width: 1200px;
-    margin: -5rem auto 5rem; /* Negative margin pulls grid up */
-    padding: 0 20px;
-}
+.hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+.hero p { color: #666; }
 
 .pricing-grid {
     display: flex;
-    gap: 2rem;
     justify-content: center;
-    align-items: flex-start; /* Aligns tops of cards */
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
 .card {
-    background: var(--white);
+    background: white;
     flex: 1;
-    padding: 2.5rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    border: 1px solid #f1f5f9;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    border: 1px solid #eee;
 }
 
-.card:hover {
-    transform: translateY(-10px); /* Lift up effect */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-}
-
-/* Featured Card Style */
 .card.popular {
-    border: 2px solid var(--primary);
+    border: 2px solid #6366f1;
     transform: scale(1.05);
-    z-index: 10;
-}
-
-.card.popular:hover {
-    transform: scale(1.05) translateY(-10px);
+    position: relative;
 }
 
 .badge {
     position: absolute;
-    top: -15px;
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--primary);
+    background: #6366f1;
     color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 2rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 12px;
 }
 
-.card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
+.price-tag { font-size: 2.5rem; font-weight: bold; margin: 15px 0; }
+.price-tag span { font-size: 1rem; color: #777; }
 
-.desc {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-}
+.features { list-style: none; margin-bottom: 20px; text-align: left; }
+.features li { margin-bottom: 10px; }
+.features i { color: #6366f1; margin-right: 10px; }
 
-.price-tag {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 2rem;
-}
-
-.price-tag span {
-    font-size: 1rem;
-    color: var(--text-light);
-    font-weight: 400;
-}
-
-.features {
-    list-style: none;
-    margin-bottom: 2.5rem;
-    text-align: left;
-}
-
-.features li {
-    margin-bottom: 1rem;
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.features i {
-    color: var(--primary);
-}
-
-/* Buttons */
 button {
     width: 100%;
-    padding: 1rem;
-    border-radius: 0.8rem;
-    font-size: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    margin-top: 10px;
 }
+.btn-primary { background: #6366f1; color: white; }
+.btn-outline { background: transparent; border: 1px solid #ccc; }
 
-.btn-primary {
-    background: var(--primary);
-    color: white;
-    border: none;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-}
+footer { text-align: center; padding: 40px; color: #777; }
 
-.btn-primary:hover {
-    background: var(--primary-dark);
-}
 
-.btn-outline {
-    background: transparent;
-    border: 2px solid #e2e8f0;
-    color: var(--text-dark);
-}
-
-.btn-outline:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-light);
-}
-
-/* ------------------------------------------ */
-/* --- TASK 4: MEDIA QUERIES (Responsive) --- */
-/* ------------------------------------------ */
-
+/* --- RESPONSIVE DESIGN (Mobile Fix) --- */
 @media (max-width: 768px) {
-    
-    /* 1. Mobile Navigation (Hamburger Menu) */
-    .hamburger {
-        display: block; /* Show hamburger icon */
-        cursor: pointer;
+
+    .navbar {
+        /* STACK THE NAV ITEMS VERTICALLY */
+        flex-direction: column; 
+        padding: 15px;
+        height: auto; /* Allow height to grow */
     }
 
-    .hamburger span {
-        display: block;
-        width: 25px;
-        height: 3px;
-        background: var(--text-dark);
-        margin: 5px 0;
-        transition: 0.3s;
+    .logo {
+        margin-bottom: 15px; /* Add space between logo and links */
     }
 
     .nav-links {
-        /* Hide menu off-screen by default */
-        position: fixed;
-        top: 70px; /* Below header */
-        right: -100%; /* Push off screen */
+        /* Display links in a row below the logo */
         width: 100%;
-        height: calc(100vh - 70px);
-        background: white;
-        flex-direction: column; /* Stack vertical */
-        justify-content: center;
-        transition: 0.4s ease-in-out;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+        justify-content: center; /* Center them */
+        gap: 15px; /* Space between words */
+        flex-wrap: wrap; /* Allow wrapping if screen is VERY small */
     }
 
-    /* When checkbox is checked, slide menu in */
-    #menu-toggle:checked ~ .nav-links {
-        right: 0;
+    .nav-links a {
+        font-size: 0.9rem; /* Slightly smaller text to fit */
     }
 
-    /* Animate Hamburger to X */
-    #menu-toggle:checked ~ .hamburger span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-    }
-    #menu-toggle:checked ~ .hamburger span:nth-child(2) {
-        opacity: 0;
-    }
-    #menu-toggle:checked ~ .hamburger span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-    }
-
-    /* 2. Hero Adjustments */
-    .hero h1 {
-        font-size: 2.5rem; /* Smaller heading */
-    }
-
-    /* 3. Stack Pricing Cards */
-    .pricing-grid {
-        flex-direction: column; /* Vertical stack */
-        align-items: center;
-    }
-
-    .card {
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .card.popular {
-        transform: scale(1); /* Reset scale */
-        order: -1; /* Put popular one first on mobile */
-    }
+    /* Adjust content spacing */
+    .hero { padding-top: 40px; }
+    .hero h1 { font-size: 2rem; }
+    
+    /* Stack cards */
+    .pricing-grid { flex-direction: column; }
+    .card.popular { transform: scale(1); margin-bottom: 20px; }
 }
